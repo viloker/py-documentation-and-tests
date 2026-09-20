@@ -92,14 +92,17 @@ class ActorViewSet(
             OpenApiParameter(
                 name="name",
                 required=True,
+                description="Name of the cinema hall"
             ),
             OpenApiParameter(
                 name="rows",
                 required=True,
+                description="Number of rows in the cinema hall"
             ),
             OpenApiParameter(
                 name="seats_in_row",
                 required=True,
+                description="Number of seats in each row"
             ),
         ],
         description="Create a new cinema hall",
@@ -113,26 +116,6 @@ class CinemaHallViewSet(
 ):
     queryset = CinemaHall.objects.all()
     serializer_class = CinemaHallSerializer
-
-    @extend_schema(
-        parameters=[
-            OpenApiParameter(
-                name="name",
-                required=True,
-            ),
-            OpenApiParameter(
-                name="rows",
-                required=True,
-            ),
-            OpenApiParameter(
-                name="seats_in_row",
-                required=True,
-            ),
-        ],
-    )
-    def create(self, request, *args, **kwargs):
-        """Create a new cinema hall"""
-        return super().create(request, *args, **kwargs)
 
 
 @extend_schema_view(
